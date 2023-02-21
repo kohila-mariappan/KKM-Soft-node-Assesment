@@ -1,0 +1,25 @@
+{
+  "name": "kkm-soft-node-assesment",
+  "version": "1.0.0",
+  "description": "user signup, login and product details",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "ecommerce"
+  ],
+  "author": "Kohila Mariappan",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "git": "^0.1.5",
+    "joi": "^17.8.1",
+    "jsonwebtoken": "^9.0.0",
+    "mysql2": "^3.1.2",
+    "sequelize": "^6.28.0"
+  }
+}
