@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken')
 const statusCode = require('../utils/statusCode')
-const db = require('../models')
-const {User} = db;
+const User = require('../models/user-schema')
 
 const verifyToken = async(req, res, next) => {
   try {
@@ -17,13 +16,14 @@ const verifyToken = async(req, res, next) => {
     try {
       const decodedToken = jwt.verify(token, process.env.JWT_SECRET)
       console.log('decoded',decodedToken)
-      const user = await User.findOne({where:{userId:decodedToken.userId}})
+      const user = await User.findOne({email:decodedToken.email})
       console.log('user',user)
 
       if (!user) {
         throw 'invalid user ID'
       } else {
-        next()
+        req.email = user.email
+        return next()
       }
     
     } catch (err) {

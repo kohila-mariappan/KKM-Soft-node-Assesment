@@ -1,25 +1,10 @@
-module.exports = {
+const mongoose = require('mongoose')
 
-    HOST: 'localhost',
-  
-    USER: 'root',
-  
-    PASSWORD: 'Kohila@96',
-  
-    DB: 'KKM',
-  
-    dialect: 'mysql',
-  
-    pool: {
-  
-      max: 5,
-  
-      min: 0,
-  
-      acquire: 30000,
-  
-      idle: 10000
-  
-    }
-  
-  }
+exports.connect = () => {
+  mongoose.connect(process.env.DB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+    .then(() => console.log('Successfully connected to database'))
+    .catch((err) => console.log('ERROR : ', err))
+}
