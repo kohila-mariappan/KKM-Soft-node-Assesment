@@ -170,16 +170,15 @@ const searchUser  = async (req,res) => {
   const start = (page - 1) * size
   console.log('query',query)
 
-  const cmsList = await User.aggregate([
+  const userList = await User.aggregate([
     { $match: query },
     { $skip: parseInt(start) },
     { $limit: parseInt(size) },
     { $sort: sortOrder }
   ])
-  // const cmsCount = await cmsModel.count(query)
-  // return { result: cmsList, totalCount: cmsCount }
+
   const message = 'search list'
-  statusCode.successResponseWithData(res,message,cmsList)
+  statusCode.successResponseWithData(res,message,userList)
 }
 
 
