@@ -15,8 +15,8 @@ console.log(`Users listening at http://localhost:${process.env.API_PORT}`)
 
 //Database
 
-const db = require('./models')
-db.sequelize.sync()
+const db = require('./config/db-Config')
+db.connect()
 
 //Routes Call
 
